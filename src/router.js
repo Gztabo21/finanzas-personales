@@ -1,0 +1,12 @@
+export const LANDING = '/';
+export const SIGN_UP = '/registrar';
+export const SIGN_IN = '/login';
+export const HOME = '/home';
+export const CLIENT = '/clients';
+export const SERVICE = '/services';
+export const SALE = '/sale';
+export const PAY = '/pay';
+export const ACCOUNT = '/account';
+export const ADMIN = '/admin';
+export const PASSWORD_FORGET = '/pw-forget';
+export const ERROR404 = '*';
