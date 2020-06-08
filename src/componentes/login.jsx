@@ -34,6 +34,18 @@ const INITIAL_STATE = {
     error: null,
   };
 
+  const user = [{
+    id:1,
+    emailUser:'admin@admin.com',
+    passwordUser:'1234',
+    role:'admin',
+  },{
+    id:2,
+    emailUser:'client@client.com',
+    passwordUser:'5678',
+    role:'client'
+  }
+]
  class Login extends Component {
     constructor(props) {
       super(props);
@@ -49,11 +61,31 @@ const INITIAL_STATE = {
       this.setState({[name] : value});
     }
   
+/*     // setter
+localStorage.setItem('myData', data);
+ 
+// getter
+localStorage.getItem('myData');
+ 
+// remove
+localStorage.removeItem('myData');
+ 
+// remove all
+localStorage.clear(); */
     handleSubmit(event) { 
 
         const { email, password } = this.state;
-        if(email)
-      event.preventDefault();
+      
+
+        if(user.map(r=>r.emailUser=== email) && user.map(r=>r.passwordUser === password) ){
+          console.log('pass')
+
+          user.map(r=>r.role=== 'admin')?alert('bienvenido Admin'):alert('Bienvenido Client')
+        }else{
+          console.log('error')
+        }
+        
+     // event.preventDefault();
     }
   
     render() {
