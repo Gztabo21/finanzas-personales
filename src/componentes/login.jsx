@@ -7,14 +7,12 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+
 import InputAdornment from '@material-ui/core/InputAdornment';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -75,26 +73,30 @@ localStorage.clear(); */
     handleSubmit(event) { 
 
         const { email, password } = this.state;
-        let isAdmin
-        if(user.map(r=>r.emailUser=== email) && user.map(r=>r.passwordUser === password) ){
-          console.log('pass')
-          isAdmin = user.map(r=>r.role=== 'admin')
-          // consultar que tipo de usuario es
-          if(isAdmin){
-            //almacena el localStorage
-            localStorage.setItem('myData', isAdmin)
-            alert('bienvenido Admin')
-          }else{
-            localStorage.setItem('myData', 'client')
-            alert('Bienvenido Client')
-          }
+        let session 
+        let role 
+        let validation = user.find((r)=>r.emailUser === email && r.passwordUser === password )
 
-        }else{
-          console.log('error')
-        }
-        
-     // event.preventDefault();
-    }
+       if(validation !== undefined ){
+        session = validation.id
+              //almacena el localStorage
+              localStorage.setItem('User', session);
+              if(validation.role === 'admin'){
+                alert('bienvenido Admin')
+                this.props.history.push(ROUTES.HOME)
+              }else{
+                alert('Bienvenido Client')
+                this.props.history.push(ROUTES.HOME)
+              }
+
+       }else{
+         alert('Usuario o Contraseña Incorrecta');
+       }
+          //end map
+     event.preventDefault();
+      }
+     
+    
   
     render() {
         const { email, password, error } = this.state;
