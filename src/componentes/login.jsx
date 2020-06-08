@@ -75,12 +75,20 @@ localStorage.clear(); */
     handleSubmit(event) { 
 
         const { email, password } = this.state;
-      
-
+        let isAdmin
         if(user.map(r=>r.emailUser=== email) && user.map(r=>r.passwordUser === password) ){
           console.log('pass')
+          isAdmin = user.map(r=>r.role=== 'admin')
+          // consultar que tipo de usuario es
+          if(isAdmin){
+            //almacena el localStorage
+            localStorage.setItem('myData', isAdmin)
+            alert('bienvenido Admin')
+          }else{
+            localStorage.setItem('myData', 'client')
+            alert('Bienvenido Client')
+          }
 
-          user.map(r=>r.role=== 'admin')?alert('bienvenido Admin'):alert('Bienvenido Client')
         }else{
           console.log('error')
         }

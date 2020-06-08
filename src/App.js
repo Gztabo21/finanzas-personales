@@ -11,8 +11,8 @@ function App() {
     <>
     <Router> 
       <Route exact path={ROUTES.LANDING} component={Login} />
-      {/*  <Route path={ROUTES.HOME} component={HomePage} />
-       <Route path={ROUTES.CLIENT} component={Client} />
+        {/* <Route path={ROUTES.HOME} component={HomePage} />
+      <Route path={ROUTES.CLIENT} component={Client} />
        <Route path={ROUTES.SALE} component={InvoiceSale} />
        <Route path={ROUTES.SERVICE} component={Service} />
        <Route path={'/pay/:id'} component={Abonar} />
